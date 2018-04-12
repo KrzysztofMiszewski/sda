@@ -21,6 +21,13 @@ public class CourseManager {
         greet += businessCard;
         return greet;
     }
+	
+	public void leave(){
+		
+		classRoom.setCourseManager(null);
+		this.classRoom = null;
+		
+	}
     
     public String getBusinessCard() {
         String title = "Mr. " + this.firstName + " " + this.lastName;
