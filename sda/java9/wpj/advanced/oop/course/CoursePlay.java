@@ -218,6 +218,13 @@ public class CoursePlay {
 		stageDirections("Jaki manager jest w pokoju? " + ourRoom.getCourseManager());
 		
 		// 3 Uczestnicy wstają i wychodzą z Sali.
+		
+		for (int i = 0; i < trainees.length; i++){
+			trainees[i].stand();
+			ourRoom.removeTrainee(trainees[i]);
+		}
+		stageDirections("Jacy uczestnicy są w sali? " + java.util.Arrays.toString(ourRoom.getTrainees()));
+		
 		// 4 Od 2 do 6 uczestników idzie do Toalet. Uczestnicy mogą być różnych płci. Toalety nie są koedukacyjne.
 		// 5 Pozostali Uczestnicy idą do kuchni. Każdy z Uczestników bierze w kuchni Kubek.
 		// 6 Część Uczestników robi kawę w Automacie do kawy, część nalewa sobie wodę w Automacie z wodą (proporcje 75% do 25%).
