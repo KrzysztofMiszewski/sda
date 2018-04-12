@@ -10,6 +10,7 @@ public class Trainee
     private boolean fullTrainiesCup;
     private ClassRoom classRoom;
 	private Chair myChair;
+	private char plec;
     
     public String sayGreetings() {
 		
@@ -28,6 +29,14 @@ public class Trainee
 		}
     }    
 	
+	public void goToilet(Toilet toilet){
+		if (toilet.getOccupant() == null){
+			toilet.setOccupant(this);
+		} else {
+			toilet.placeInLine(this);
+		}
+	}
+	
 	public void sit(){
 		this.myChair.setUseOfChair(true);
 	}
@@ -38,8 +47,9 @@ public class Trainee
 	
     public Trainee() {}
     
-    public Trainee(String name) {
+    public Trainee(String name, char plec) {
         this.name = name;
+		this.plec = plec;
     }
     
     public String getName() {
@@ -53,10 +63,18 @@ public class Trainee
 	public Chair getMyChair(){
 		return myChair;
 	}
+	
+	public char getPlec(){
+		return plec;
+	}
 
     public void setName(String name) {
         this.name = name;
     }
+	
+	public void setPlec(char plec){
+		this.plec = plec;
+	}
 	
 	public void setMyChair(Chair chair){
 		this.myChair = chair;

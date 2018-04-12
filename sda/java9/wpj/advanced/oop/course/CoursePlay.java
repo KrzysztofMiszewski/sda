@@ -24,6 +24,7 @@ public class CoursePlay {
          */
         Trainee firstTrainee = new Trainee();
         firstTrainee.setName("Michał Cz.");
+		firstTrainee.setPlec('M');
         
         /* 2. Uczestnik Kursu próbuje wejść do Sali szkoleniowej, ale jest zamknięta.
          *
@@ -115,16 +116,17 @@ public class CoursePlay {
         // Trainee, to potem musimy pamiętać, aby ustawić przynajmniej imię tego uczestnika.
         trainees[1] = new Trainee();
         trainees[1].setName("Krysia T.");
+		trainees[1].setPlec('K');
         // Wygodniej jest utworzyć obiekt z wykorzystaniem konstruktora z jednym parametrem.
-        trainees[2] = new Trainee("Artur K.");
-        trainees[3] = new Trainee("Norbert W.");
-        trainees[4] = new Trainee("Michał K.");
-        trainees[5] = new Trainee("Krzysztof M.");
-        trainees[6] = new Trainee("Wojtek S.");
-        trainees[7] = new Trainee("Michał Rz.");
-        trainees[8] = new Trainee("Sebastian M.");
-        trainees[9] = new Trainee("Jacek Z.");
-        trainees[10] = new Trainee("Grzesiek G.");
+        trainees[2] = new Trainee("Artur K.", 'M');
+        trainees[3] = new Trainee("Norbert W.", 'M');
+        trainees[4] = new Trainee("Michał K.", 'M');
+        trainees[5] = new Trainee("Krzysztof M.", 'M');
+        trainees[6] = new Trainee("Wojtek S.", 'M');
+        trainees[7] = new Trainee("Michał Rz.", 'M');
+        trainees[8] = new Trainee("Sebastian M.", 'M');
+        trainees[9] = new Trainee("Jacek Z.", 'M');
+        trainees[10] = new Trainee("Grzesiek G.", 'M');
         stageDirections("Nasi uczestnicy oczami JVM: " + java.util.Arrays.toString(trainees));
         
         
@@ -226,12 +228,43 @@ public class CoursePlay {
 		stageDirections("Jacy uczestnicy są w sali? " + java.util.Arrays.toString(ourRoom.getTrainees()));
 		
 		// 4 Od 2 do 6 uczestników idzie do Toalet. Uczestnicy mogą być różnych płci. Toalety nie są koedukacyjne.
+		
+		Toilet male = new Toilet('M', 4);
+		Toilet female = new Toilet('D', 4);
+		int randomNumber = 2 + (int) (5 * Math.random());
+		stageDirections(randomNumber + " uczestnikow idzie do Toalety");
+		goToilet(trainees, randomNumber, male, female);
+		stageDirections("Uczestnik w toalecie meskiej: " + male.getOccupant());
+		stageDirections("Kolejka do toalety meskiej: " + java.util.Arrays.toString(male.getLine()));
+		stageDirections("Uczestnik w toalecie damskiej: " + female.getOccupant());
+		stageDirections("Kolejka do toalety damskiej: " + java.util.Arrays.toString(female.getLine()));
+		
 		// 5 Pozostali Uczestnicy idą do kuchni. Każdy z Uczestników bierze w kuchni Kubek.
 		// 6 Część Uczestników robi kawę w Automacie do kawy, część nalewa sobie wodę w Automacie z wodą (proporcje 75% do 25%).
 		// 7 Połowa z Uczestników, którzy byli w Toaletach przychodzi do kuchni zrobić sobie kawę.
 		// 8 Wszyscy Uczestnicy wracają na Salę i zajmują te same miejsca, co wcześniej.
 
     }
+	
+	private static void goToilet(Trainee[] trainees, int number, Toilet male, Toilet female){
+		int[] places = new int[trainees.length];
+		int notUsed = (places.length - 1);
+		for (int i = 0; i < places.length; i++){
+			places[i] = i;
+		}
+		for (int i = 0; i < number; i++){
+			int randTrainee = (int) (notUsed * Math.random());
+			if (trainees[places[randTrainee]].getPlec() == 'M'){
+				trainees[places[randTrainee]].goToilet(male);
+			} else {
+				trainees[places[randTrainee]].goToilet(female);
+			}
+			int temp =  places[notUsed];
+			places[notUsed] = places[randTrainee];
+			places[randTrainee] = temp;
+			notUsed--;
+		}
+	}
 	
 	private static void pickSeat(Trainee[] trainees, ClassRoom classRoom){
 		int[] places = new int[classRoom.getChairs().length];
