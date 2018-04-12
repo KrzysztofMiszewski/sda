@@ -36,7 +36,7 @@ public class CoursePlay {
          * próbuje wejść do naszej sali { firstTrainee.enter(ourRoom) }
          * Operacja ta nie musi zakończyć się powodzeniem.
          */
-        ClassRoom ourRoom = new ClassRoom(20, 11);
+        ClassRoom ourRoom = new ClassRoom(20);
         boolean success = firstTrainee.enter(ourRoom);
         stageDirections("Czy udalo sie wejsc do sali? " + success);
         
@@ -187,10 +187,16 @@ public class CoursePlay {
          * Zastanów się również, czy powinniśmy tutaj, w sztuce tworzyć te wszystkie stoły i krzesła
          * czy może powinny one powstać gdzie indzie? Np. ... w konstruktorze klasy ClassRoom?
          */
-         
-         
-        // TODO
-         
+
+		pickSeat(trainees, ourRoom);
+		
+		for (int i = 0; i < trainees.length; i++) {
+            trainees[i].sit();
+        }
+		// for (int i = 0; i < ourRoom.getChairs().length; i++) {
+            // System.out.println("Krzeslo " + (i + 1) + ": " + ourRoom.getChairs()[i].getUseOfChair());
+        // }
+		
         
         /* 11. Menedżer kursu opowiada o Kursie, przedstawia informacje ogólne
          *
@@ -205,7 +211,24 @@ public class CoursePlay {
         sdaJava.setShortDescription("Kurs Java uczy kodowania, programowania i rozwiązywania problemów!");
         say("Menedżer", manager.sayCourseInfo(sdaJava));
     }
-    
+	
+	private static void pickSeat(Trainee[] trainees, ClassRoom classRoom){
+		int[] places = new int[classRoom.getChairs().length];
+		int notUsed = (places.length - 1);
+		for (int i = 0; i < places.length; i++){
+			places[i] = i;
+		}
+		for (int i = 0; i < trainees.length; i++){
+			int randPlace = (int) (notUsed * Math.random());
+			trainees[i].setMyChair(classRoom.getChairs()[places[randPlace]]);
+			int temp =  places[notUsed];
+			places[notUsed] = places[randPlace];
+			places[randPlace] = temp;
+			notUsed--;
+			say (trainees[i].getName(), ("Wybieram siedzenie " + trainees[i].getMyChair()));
+		}
+	}
+	
     private static void stageDirections(String msg) {
         System.out.println("====> Didaskalia\n" + msg + "\n====");
     }

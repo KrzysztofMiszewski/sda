@@ -133,7 +133,7 @@ public class ClassRoom {
 		return board;
 	}
 	
-	public Chair[] getChair(){
+	public Chair[] getChairs(){
 		return chairs;
 	}
 	

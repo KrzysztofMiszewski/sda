@@ -7,13 +7,9 @@ import sda.java9.wpj.advanced.oop.course.items.*;
 public class Trainee 
 {
     private String name;
-    private boolean attendanceOfTrainee;
-    private String lateTrainies;
-    private String trainiesLaptop;
     private boolean fullTrainiesCup;
-    private String trainiesDinner;
-    private String trainiesTrener;
     private ClassRoom classRoom;
+	private Chair myChair;
     
     public String sayGreetings() {
 		
@@ -32,58 +28,38 @@ public class Trainee
 		}
     }    
 	
+	public void sit(){
+		this.myChair.setUseOfChair(true);
+	}
+	
+	public void stand(){
+		this.myChair.setUseOfChair(false);
+	}
+	
     public Trainee() {}
     
     public Trainee(String name) {
         this.name = name;
     }
-
-    public Trainee (String name, String TrainiesLaptop, boolean attendanceOfTrainee, 
-                    String lateTrainies, boolean fullTrainiesCup, String TraineesDinner, 
-                    String traineesTrener) {
-        this.name = name;
-        this.trainiesLaptop = trainiesLaptop; 
-        this.attendanceOfTrainee = attendanceOfTrainee;
-        this.lateTrainies = lateTrainies;
-        this.fullTrainiesCup = fullTrainiesCup;
-        this.trainiesDinner = trainiesDinner;
-        this.trainiesTrener = trainiesTrener;
-            
-    }
     
-    public String getName () {
+    public String getName() {
         return name;
     }
 
-    public String getTrainiesLaptop () {
-        return trainiesLaptop;
-    }
-
-    public boolean getAttendanceOfTrainee () {
-        return attendanceOfTrainee;
-    }
-
-    public boolean getFullTrainiesCup () {
+    public boolean getFullTrainiesCup() {
         return fullTrainiesCup;
     }
+	
+	public Chair getMyChair(){
+		return myChair;
+	}
 
-    public String getTrainiesTrener () {
-        return trainiesTrener;
-    }
-
-    public String getTrainiesDinner () {
-        return trainiesDinner;
-    }
-
-    public void setName (String name) {
+    public void setName(String name) {
         this.name = name;
     }
-
-    public void setTrainiesLaptop (String name) {
-        this.trainiesLaptop = trainiesLaptop;
-    }
-
-    public void setTrainiesDinner (String name) {
-        this.trainiesDinner = trainiesDinner;
-    }
+	
+	public void setMyChair(Chair chair){
+		this.myChair = chair;
+	}
+	
 }
