@@ -189,14 +189,9 @@ public class CoursePlay {
          */
 
 		pickSeat(trainees, ourRoom);
-		
 		for (int i = 0; i < trainees.length; i++) {
             trainees[i].sit();
-        }
-		// for (int i = 0; i < ourRoom.getChairs().length; i++) {
-            // System.out.println("Krzeslo " + (i + 1) + ": " + ourRoom.getChairs()[i].getUseOfChair());
-        // }
-		
+        }		
         
         /* 11. Menedżer kursu opowiada o Kursie, przedstawia informacje ogólne
          *
@@ -210,6 +205,18 @@ public class CoursePlay {
         sdaJava.setTitle("Java");
         sdaJava.setShortDescription("Kurs Java uczy kodowania, programowania i rozwiązywania problemów!");
         say("Menedżer", manager.sayCourseInfo(sdaJava));
+		
+		// SCENA 2
+		
+		// 1 Trener ogłasza przerwę
+		// 2 Menedżer kursu opuszcza Salę i Kurs.
+		// 3 Uczestnicy wstają i wychodzą z Sali.
+		// 4 Od 2 do 6 uczestników idzie do Toalet. Uczestnicy mogą być różnych płci. Toalety nie są koedukacyjne.
+		// 5 Pozostali Uczestnicy idą do kuchni. Każdy z Uczestników bierze w kuchni Kubek.
+		// 6 Część Uczestników robi kawę w Automacie do kawy, część nalewa sobie wodę w Automacie z wodą (proporcje 75% do 25%).
+		// 7 Połowa z Uczestników, którzy byli w Toaletach przychodzi do kuchni zrobić sobie kawę.
+		// 8 Wszyscy Uczestnicy wracają na Salę i zajmują te same miejsca, co wcześniej.
+
     }
 	
 	private static void pickSeat(Trainee[] trainees, ClassRoom classRoom){
