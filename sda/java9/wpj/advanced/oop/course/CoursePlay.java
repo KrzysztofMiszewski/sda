@@ -241,6 +241,7 @@ public class CoursePlay {
 		
 		// 5 Pozostali Uczestnicy idą do kuchni. Każdy z Uczestników bierze w kuchni Kubek.
 		
+		Kitchen kitchen = new Kitchen();
 		for (int i = 0; i < trainees.length; i++){
 			;
 		}

@@ -1,4 +1,7 @@
-package sda.java9.wpj.advanced.oop.course.items;
+package sda.java9.wpj.advanced.oop.course.rooms;
+
+import sda.java9.wpj.advanced.oop.course.people.Trainee;
+import sda.java9.wpj.advanced.oop.course.items.*;
 
 public class Kitchen{
 	
@@ -16,23 +19,23 @@ public class Kitchen{
 		waterMachine = new WaterMachine();
 	}
 	
-	public void getCups(){
+	public Cup[] getCups(){
 		return cups;
 	}
 	
-	public void getCoffeeMachine(){
+	public CoffeeMachine getCoffeeMachine(){
 		return coffeeMachine;
 	}
 	
-	public void getWaterMachine(){
+	public WaterMachine getWaterMachine(){
 		return waterMachine;
 	}
 	
-	public void getTrainees(){
+	public Trainee[] getTrainees(){
 		return trainees;
 	}
 	
-	public Cup[] setCups(Cup[] cups){
+	public void setCups(Cup[] cups){
 		this.cups = cups;
 	}
 	

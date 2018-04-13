@@ -8,6 +8,10 @@ public class CoffeeMachine {
 	private boolean milk;
 	private boolean energy;
 	
+	public CoffeeMachine(){
+		
+	}
+	
 	public CoffeeMachine (boolean water, boolean coffe,boolean milk,boolean energy){
 		this.water = water;
 		this.coffe = coffe;
