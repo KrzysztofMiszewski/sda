@@ -11,6 +11,7 @@ public class Trainee
     private ClassRoom classRoom;
 	private Chair myChair;
 	private char plec;
+	private Cup cup;
     
     public String sayGreetings() {
 		

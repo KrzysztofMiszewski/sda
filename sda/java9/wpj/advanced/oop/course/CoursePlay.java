@@ -231,28 +231,33 @@ public class CoursePlay {
 		
 		Toilet male = new Toilet('M', 4);
 		Toilet female = new Toilet('D', 4);
-		int randomNumber = 2 + (int) (5 * Math.random());
-		stageDirections(randomNumber + " uczestnikow idzie do Toalety");
-		goToilet(trainees, randomNumber, male, female);
+		int traineesInToilet = 2 + (int) (5 * Math.random());
+		stageDirections(traineesInToilet + " uczestnikow idzie do Toalety");
+		goToilet(trainees, traineesInToilet, male, female);
 		stageDirections("Uczestnik w toalecie meskiej: " + male.getOccupant());
 		stageDirections("Kolejka do toalety meskiej: " + java.util.Arrays.toString(male.getLine()));
 		stageDirections("Uczestnik w toalecie damskiej: " + female.getOccupant());
 		stageDirections("Kolejka do toalety damskiej: " + java.util.Arrays.toString(female.getLine()));
 		
 		// 5 Pozostali Uczestnicy idą do kuchni. Każdy z Uczestników bierze w kuchni Kubek.
+		
+		for (int i = 0; i < trainees.length; i++){
+			;
+		}
+		
 		// 6 Część Uczestników robi kawę w Automacie do kawy, część nalewa sobie wodę w Automacie z wodą (proporcje 75% do 25%).
 		// 7 Połowa z Uczestników, którzy byli w Toaletach przychodzi do kuchni zrobić sobie kawę.
 		// 8 Wszyscy Uczestnicy wracają na Salę i zajmują te same miejsca, co wcześniej.
 
     }
 	
-	private static void goToilet(Trainee[] trainees, int number, Toilet male, Toilet female){
+	private static void goToilet(Trainee[] trainees, int traineesInToilet, Toilet male, Toilet female){
 		int[] places = new int[trainees.length];
 		int notUsed = (places.length - 1);
 		for (int i = 0; i < places.length; i++){
 			places[i] = i;
 		}
-		for (int i = 0; i < number; i++){
+		for (int i = 0; i < traineesInToilet; i++){
 			int randTrainee = (int) (notUsed * Math.random());
 			if (trainees[places[randTrainee]].getPlec() == 'M'){
 				trainees[places[randTrainee]].goToilet(male);
