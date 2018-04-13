@@ -20,6 +20,7 @@ public class CoffeeMachine {
 			cup.setContent("Kawa");
 			if (Math.random() >= 0.9){
 				haveCoffee = false;
+				System.out.println("CoffeeMachine - Brak kawy");
 			}
 		}
 	}

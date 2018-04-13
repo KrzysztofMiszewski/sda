@@ -18,6 +18,7 @@ public class WaterMachine {
 			cup.setContent("Woda");
 			if (Math.random() >= 0.9){
 				haveWater = false;
+				System.out.println("CoffeeMachine - Brak wody");
 			}
 		}
 	}
