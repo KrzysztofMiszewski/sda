@@ -212,7 +212,7 @@ public class CoursePlay {
 		
 		// 1 Trener ogłasza przerwę
 		
-		say(theTrainer.getName() + ": ", "Oglaszam przerwe!");
+		say(theTrainer.getName(), "Oglaszam przerwe!");
 		
 		// 2 Menedżer kursu opuszcza Salę i Kurs.
 		
@@ -241,9 +241,15 @@ public class CoursePlay {
 		
 		// 5 Pozostali Uczestnicy idą do kuchni. Każdy z Uczestników bierze w kuchni Kubek.
 		
-		Kitchen kitchen = new Kitchen();
+		Kitchen kitchen = new Kitchen(trainees.length);
 		for (int i = 0; i < trainees.length; i++){
-			;
+			if (!trainees[i].getInToilet()){
+				kitchen.addTrainee(trainees[i]);
+				trainees[i].setCup(kitchen.getCup(i));
+			}
+		}
+		for (int i = 0; i < trainees.length; i++){
+			say(trainees[i].getName(), "Moj kubek to: " + trainees[i].getCup());
 		}
 		
 		// 6 Część Uczestników robi kawę w Automacie do kawy, część nalewa sobie wodę w Automacie z wodą (proporcje 75% do 25%).

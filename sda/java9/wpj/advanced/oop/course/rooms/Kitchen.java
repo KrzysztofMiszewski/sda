@@ -10,13 +10,36 @@ public class Kitchen{
 	private WaterMachine waterMachine;
 	private Trainee[] trainees;
 	
-	public Kitchen(){
+	public Kitchen(int size){
 		cups = new Cup[20];
 		for (int i = 0; i < cups.length; i++){
 			cups[i] = new Cup();
 		}
 		coffeeMachine = new CoffeeMachine();
 		waterMachine = new WaterMachine();
+		trainees = new Trainee[size];
+		
+	}
+	
+	public void addTrainee(Trainee trainee){
+		boolean added = false;
+		for (int i = 0; i < this.trainees.length; i++){
+			if (this.trainees[i] == null) {
+				trainees[i] = trainee;
+				added = true;
+                break;
+			}
+		}
+		if (added = true) {
+			System.out.println("[DEBUG] Dodano uczestnika: " + trainee.getName());
+		} else {
+			System.out.println("[DEBUG] Brak miejsca");
+		}
+		
+	}
+	
+	public Cup getCup(int number){
+		return cups[number];
 	}
 	
 	public Cup[] getCups(){

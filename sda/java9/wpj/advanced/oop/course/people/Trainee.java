@@ -12,6 +12,7 @@ public class Trainee
 	private Chair myChair;
 	private char plec;
 	private Cup cup;
+	private boolean inToilet;
     
     public String sayGreetings() {
 		
@@ -33,8 +34,10 @@ public class Trainee
 	public void goToilet(Toilet toilet){
 		if (toilet.getOccupant() == null){
 			toilet.setOccupant(this);
+			inToilet = true;
 		} else {
 			toilet.placeInLine(this);
+			inToilet = true;
 		}
 	}
 	
@@ -65,10 +68,18 @@ public class Trainee
 		return myChair;
 	}
 	
+	public Cup getCup(){
+		return cup;
+	}
+	
 	public char getPlec(){
 		return plec;
 	}
-
+	
+	public boolean getInToilet(){
+		return inToilet;
+	}
+	
     public void setName(String name) {
         this.name = name;
     }
@@ -79,6 +90,10 @@ public class Trainee
 	
 	public void setMyChair(Chair chair){
 		this.myChair = chair;
+	}
+	
+	public void setCup(Cup cup){
+		this.cup = cup;
 	}
 	
 }
