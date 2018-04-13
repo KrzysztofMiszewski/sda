@@ -253,6 +253,18 @@ public class CoursePlay {
 		}
 		
 		// 6 Część Uczestników robi kawę w Automacie do kawy, część nalewa sobie wodę w Automacie z wodą (proporcje 75% do 25%).
+		String content = "";
+		int woda = (trainees.length - traineesInToilet) / 4;
+		for (int i = 0; i < (trainees.length - traineesInToilet); i++){
+			if (i < woda){
+				kitchen.getWaterMachine().fill(kitchen.getTrainees()[i].getCup());
+			} else {
+				kitchen.getCoffeeMachine().fill(kitchen.getTrainees()[i].getCup());
+			}
+			content = content + kitchen.getTrainees()[i].getCup().getContent() + ", ";
+		}
+		stageDirections("Zawartosc kubkow: " + content);
+		
 		// 7 Połowa z Uczestników, którzy byli w Toaletach przychodzi do kuchni zrobić sobie kawę.
 		// 8 Wszyscy Uczestnicy wracają na Salę i zajmują te same miejsca, co wcześniej.
 

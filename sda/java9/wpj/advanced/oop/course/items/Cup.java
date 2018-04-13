@@ -22,7 +22,7 @@ return clean;
 public String getReserved() {
 return reserved;
 }
-public  void setEmpty(String isEmpty) {
+public  void setEmpty(boolean empty) {
 	this.empty = empty;
 }
 public  void setContent(String content) {

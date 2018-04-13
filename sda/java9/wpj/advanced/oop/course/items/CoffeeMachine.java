@@ -1,30 +1,35 @@
 package sda.java9.wpj.advanced.oop.course.items;
 
+import sda.java9.wpj.advanced.oop.course.items.Cup;
+
 public class CoffeeMachine {
 	
 	//
 	private boolean water;
-	private boolean coffe;
 	private boolean milk;
 	private boolean energy;
+	private boolean haveCoffee;
 	
 	public CoffeeMachine(){
-		
+		haveCoffee = true;
 	}
 	
-	public CoffeeMachine (boolean water, boolean coffe,boolean milk,boolean energy){
-		this.water = water;
-		this.coffe = coffe;
-		this.milk = milk;
-		this.energy = energy;
+	public void fill(Cup cup){
+		if (haveCoffee == true){
+			cup.setEmpty(false);
+			cup.setContent("Kawa");
+			if (Math.random() >= 0.9){
+				haveCoffee = false;
+			}
+		}
 	}
 	
 	public boolean getWater() {
 		return water;
 	}
 	
-	public boolean getCoffe() {
-		return coffe;
+	public boolean getHaveCoffe() {
+		return haveCoffee;
 	}
 	
 	public boolean getMilk() {
@@ -39,8 +44,8 @@ public class CoffeeMachine {
         this.water = water;
     }
 	
-	public void setCoffe(boolean coffe) {
-        this.coffe = coffe;
+	public void setHaveCoffe(boolean haveCoffee) {
+        this.haveCoffee = haveCoffee;
     }
 	
 	public void setMilk(boolean milk) {
