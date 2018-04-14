@@ -15,9 +15,9 @@ public class CoursePlay {
      */
     public static void main(String[] args) {
 		
-		//boolean stage1SOP = false;
-		//boolean stage2SOP = true;
-		//boolean stage3SOP = false;
+		boolean stage1SOP = true;
+		boolean stage2SOP = false;
+		boolean stage3SOP = false;
         
         /* 1. Pojawia się pierwszy Uczestnik kursu. 
          *
@@ -43,7 +43,7 @@ public class CoursePlay {
          */
         ClassRoom ourRoom = new ClassRoom(20);
         boolean success = firstTrainee.enter(ourRoom);
-        stageDirections("Czy udalo sie wejsc do sali? " + success);
+        stageDirections("Czy udalo sie wejsc do sali? " + success, stage1SOP);
         
         /* 3. Pojawia się Menedżer kursu i przedstawia się. Uczestnik kursu przedstawia się.
          *
@@ -64,8 +64,8 @@ public class CoursePlay {
         manager.setPhoneNumber("800-800-800");
         manager.setEmail("krzysztof.mmm@sda.pl");
 
-        say("Manadżer " + manager.getFirstName(), manager.sayGreetings());
-        say("Uczestnik " + firstTrainee.getName(), firstTrainee.sayGreetings());
+        say("Manadżer " + manager.getFirstName(), manager.sayGreetings(), stage1SOP);
+        say("Uczestnik " + firstTrainee.getName(), firstTrainee.sayGreetings(), stage1SOP);
         
         /* 4. Menedżer kursu otwiera Salę szkoleniową i wchodzi do niej.
          *
@@ -86,7 +86,7 @@ public class CoursePlay {
          */
         manager.openRoom(ourRoom);
         manager.enterRoom(ourRoom);
-        stageDirections("Sala, w której jest menedżer: " + manager.getRoom());
+        stageDirections("Sala, w której jest menedżer: " + manager.getRoom(), stage1SOP);
         
         /* 5. Uczestnik wchodzi do sali
          *
@@ -96,13 +96,13 @@ public class CoursePlay {
          * niej wejść.
          */
         success = firstTrainee.enter(ourRoom);
-        stageDirections("Czy udalo sie wejsc do sali? " + success);
-        stageDirections("Nasz uczestnik dla JVM wygląda tak: " + firstTrainee);
+        stageDirections("Czy udalo sie wejsc do sali? " + success, stage1SOP);
+        stageDirections("Nasz uczestnik dla JVM wygląda tak: " + firstTrainee, stage1SOP);
         stageDirections("A jakie obiekty uczestników mamy w sali? " 
-                            + (java.util.Arrays.toString(ourRoom.getTrainees())));
-        stageDirections("Nasz menedżer dla JVM wygląda tak: " + manager);
+                            + (java.util.Arrays.toString(ourRoom.getTrainees())), stage1SOP);
+        stageDirections("Nasz menedżer dla JVM wygląda tak: " + manager, stage1SOP);
         stageDirections("A jaki obiekt menedżera mamy w sali? " 
-                            + (ourRoom.getCourseManager()));
+                            + (ourRoom.getCourseManager()), stage1SOP);
         
         /* 6. Pojawiają się pozostali Uczestnicy
          *
@@ -131,7 +131,7 @@ public class CoursePlay {
         trainees[8] = new Trainee("Sebastian M.", 'M');
         trainees[9] = new Trainee("Jacek Z.", 'M');
         trainees[10] = new Trainee("Grzesiek G.", 'M');
-        stageDirections("Nasi uczestnicy oczami JVM: " + java.util.Arrays.toString(trainees));
+        stageDirections("Nasi uczestnicy oczami JVM: " + java.util.Arrays.toString(trainees), stage1SOP);
         
         
         /* 7. Uczestnicy wchodzą do Sali szkoleniowej.
@@ -147,7 +147,7 @@ public class CoursePlay {
         for (int i = 1; i < trainees.length; i++) {
             trainees[i].enter(ourRoom);
         }
-        stageDirections("Jacy uczestnicy są w sali? " + java.util.Arrays.toString(ourRoom.getTrainees()));    
+        stageDirections("Jacy uczestnicy są w sali? " + java.util.Arrays.toString(ourRoom.getTrainees()), stage1SOP);    
         
         /* 8. Uczestnicy przedstawiają się [do tej pory wszyscy stoją].
          *
@@ -157,7 +157,7 @@ public class CoursePlay {
          * Również pierwszego, ponieważ teraz będzie się przedstawiał innym.
          */
         for (Trainee trainee : trainees) {
-            say("Uczestnik " + trainee.getName(), trainee.sayGreetings());
+            say("Uczestnik " + trainee.getName(), trainee.sayGreetings(), stage1SOP);
         }
         
         /* 9. Pojawia się Trener, wchodzi do Sali i przedstawia się
@@ -174,8 +174,8 @@ public class CoursePlay {
         // Zauważmy, że nadpisaliśmy zmienną theTrainer referencją do nowego obiektu trenera.
         // Poprzednio utworzony obiekt zostanie wyczyszczony z pamięci przez JVM
         theTrainer.enterRoom(ourRoom);
-        stageDirections("Jaki trener jest w pokoju? " + ourRoom.getTrainer());
-        say("Trener", theTrainer.sayGreetings());
+        stageDirections("Jaki trener jest w pokoju? " + ourRoom.getTrainer(), stage1SOP);
+        say("Trener", theTrainer.sayGreetings(), stage1SOP);
         
         /* 10. Uczestnicy wybierają Ławki i Krzesła, siadają.
          *
@@ -194,7 +194,7 @@ public class CoursePlay {
          * czy może powinny one powstać gdzie indzie? Np. ... w konstruktorze klasy ClassRoom?
          */
 
-		pickSeat(trainees, ourRoom);
+		pickSeat(trainees, ourRoom, stage1SOP);
 		for (int i = 0; i < trainees.length; i++) {
             trainees[i].sit();
         }		
@@ -210,18 +210,18 @@ public class CoursePlay {
         Course sdaJava = new Course();
         sdaJava.setTitle("Java");
         sdaJava.setShortDescription("Kurs Java uczy kodowania, programowania i rozwiązywania problemów!");
-        say("Menedżer", manager.sayCourseInfo(sdaJava));
+        say("Menedżer", manager.sayCourseInfo(sdaJava), stage1SOP);
 		
 		// SCENA 2
 		
 		// 1 Trener ogłasza przerwę
 		
-		say(theTrainer.getName(), "Oglaszam przerwe!");
+		say(theTrainer.getName(), "Oglaszam przerwe!", stage2SOP);
 		
 		// 2 Menedżer kursu opuszcza Salę i Kurs.
 		
 		manager.leave();
-		stageDirections("Jaki manager jest w pokoju? " + ourRoom.getCourseManager());
+		stageDirections("Jaki manager jest w pokoju? " + ourRoom.getCourseManager(), stage2SOP);
 		
 		// 3 Uczestnicy wstają i wychodzą z Sali.
 		
@@ -229,19 +229,19 @@ public class CoursePlay {
 			trainees[i].stand();
 			ourRoom.removeTrainee(trainees[i]);
 		}
-		stageDirections("Jacy uczestnicy są w sali? " + java.util.Arrays.toString(ourRoom.getTrainees()));
+		stageDirections("Jacy uczestnicy są w sali? " + java.util.Arrays.toString(ourRoom.getTrainees()), stage2SOP);
 		
 		// 4 Od 2 do 6 uczestników idzie do Toalet. Uczestnicy mogą być różnych płci. Toalety nie są koedukacyjne.
 		
 		Toilet male = new Toilet('M', 4);
 		Toilet female = new Toilet('D', 4);
 		int traineesInToilet = 2 + (int) (5 * Math.random());
-		stageDirections(traineesInToilet + " uczestnikow idzie do Toalety");
+		stageDirections(traineesInToilet + " uczestnikow idzie do Toalety", stage2SOP);
 		goToilet(trainees, traineesInToilet, male, female);
-		stageDirections("Uczestnik w toalecie meskiej: " + male.getOccupant());
-		stageDirections("Kolejka do toalety meskiej: " + java.util.Arrays.toString(male.getLain()));
-		stageDirections("Uczestnik w toalecie damskiej: " + female.getOccupant());
-		stageDirections("Kolejka do toalety damskiej: " + java.util.Arrays.toString(female.getLain()));
+		stageDirections("Uczestnik w toalecie meskiej: " + male.getOccupant(), stage2SOP);
+		stageDirections("Kolejka do toalety meskiej: " + java.util.Arrays.toString(male.getLain()), stage2SOP);
+		stageDirections("Uczestnik w toalecie damskiej: " + female.getOccupant(), stage2SOP);
+		stageDirections("Kolejka do toalety damskiej: " + java.util.Arrays.toString(female.getLain()), stage2SOP);
 		
 		// 5 Pozostali Uczestnicy idą do kuchni. Każdy z Uczestników bierze w kuchni Kubek.
 		
@@ -253,7 +253,7 @@ public class CoursePlay {
 			}
 		}
 		for (int i = 0; i < trainees.length; i++){
-			say(trainees[i].getName(), "Moj kubek to: " + trainees[i].getCup());
+			say(trainees[i].getName(), "Moj kubek to: " + trainees[i].getCup(), stage2SOP);
 		}
 		
 		// 6 Część Uczestników robi kawę w Automacie do kawy, część nalewa sobie wodę w Automacie z wodą (proporcje 75% do 25%).
@@ -269,7 +269,7 @@ public class CoursePlay {
 			}
 			content = content + kitchen.getTrainees()[i].getCup().getContent() + ", ";
 		}
-		stageDirections("Zawartosc kubkow: " + content);
+		stageDirections("Zawartosc kubkow: " + content, stage2SOP);
 		
 		// 7 Połowa z Uczestników, którzy byli w Toaletach przychodzi do kuchni zrobić sobie kawę.
 		
@@ -289,10 +289,9 @@ public class CoursePlay {
 		}
 		content = "";
 		for (int i = 0; i < traineesInKitchen; i++){
-			System.out.println(i);
 			content = content + kitchen.getTrainees()[i].getCup().getContent() + ", ";
 		}
-		stageDirections("Zawartosc kubkow: " + content);
+		stageDirections("Zawartosc kubkow: " + content, stage2SOP);
 		
 		// 8 Wszyscy Uczestnicy wracają na Salę i zajmują te same miejsca, co wcześniej.
 
@@ -318,7 +317,7 @@ public class CoursePlay {
 		}
 	}
 	
-	private static void pickSeat(Trainee[] trainees, ClassRoom classRoom){
+	private static void pickSeat(Trainee[] trainees, ClassRoom classRoom, boolean sop){
 		int[] places = new int[classRoom.getChairs().length];
 		int notUsed = (places.length - 1);
 		for (int i = 0; i < places.length; i++){
@@ -331,15 +330,19 @@ public class CoursePlay {
 			places[notUsed] = places[randPlace];
 			places[randPlace] = temp;
 			notUsed--;
-			say (trainees[i].getName(), ("Wybieram siedzenie " + trainees[i].getMyChair()));
+			say (trainees[i].getName(), ("Wybieram siedzenie " + trainees[i].getMyChair()), sop);
 		}
 	}
 	
-    private static void stageDirections(String msg) {
-        System.out.println("====> Didaskalia\n" + msg + "\n====");
+    private static void stageDirections(String msg, boolean print) {
+        if (print) {
+			System.out.println("====> Didaskalia\n" + msg + "\n====");
+		}
     }
     
-    private static void say(String who, String what) {
-        System.out.println(who + ": \n" + "    \"" + what + "\"");
+    private static void say(String who, String what, boolean print) {
+		if (print) {
+			System.out.println(who + ": \n" + "    \"" + what + "\"");
+		}
     }
 }
