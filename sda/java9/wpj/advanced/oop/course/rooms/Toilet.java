@@ -6,17 +6,30 @@ public class Toilet {
 	
     private char plec;
 	private Trainee occupant;
-	private Trainee[] line;
+	private Trainee[] lain;
 	
 	public Toilet(char plec, int lainLenght){
 		this.plec = plec;
-		this.line = new Trainee[lainLenght];
+		this.lain = new Trainee[lainLenght];
 	}
 	
 	public void placeInLine(Trainee trainee){
-		for (int i = 0; i < line.length; i++){
-			if (this.line[i] == null) {
-				line[i] = trainee;
+		for (int i = 0; i < lain.length; i++){
+			if (this.lain[i] == null) {
+				lain[i] = trainee;
+				break;
+			}
+		}
+	}
+	
+	public void emptyToilet(){
+		occupant.setInToilet(false);
+		occupant = null;
+		for (int i = 0; i < lain.length; i++){
+			if (lain[i] != null) {
+				lain[i].setInToilet(false);
+				lain[i] = null;
+			} else {
 				break;
 			}
 		}
@@ -26,15 +39,15 @@ public class Toilet {
 		return occupant;
 	}
 	
-	public Trainee[] getLine(){
-		return line;
+	public Trainee[] getLain(){
+		return lain;
 	}
 	
 	public void setOccupant(Trainee occupant){
 		this.occupant = occupant;
 	}
 	
-	public void setLine(Trainee[] line){
-		this.line = line;
+	public void setLain(Trainee[] lain){
+		this.lain = lain;
 	}
 }

@@ -80,6 +80,10 @@ public class Trainee
 		return inToilet;
 	}
 	
+	public void setInToilet(boolean inToilet){
+		this.inToilet = inToilet;
+	}
+	
     public void setName(String name) {
         this.name = name;
     }

@@ -14,6 +14,10 @@ public class CoursePlay {
      * z 3 aktów.
      */
     public static void main(String[] args) {
+		
+		//boolean stage1SOP = false;
+		//boolean stage2SOP = true;
+		//boolean stage3SOP = false;
         
         /* 1. Pojawia się pierwszy Uczestnik kursu. 
          *
@@ -235,9 +239,9 @@ public class CoursePlay {
 		stageDirections(traineesInToilet + " uczestnikow idzie do Toalety");
 		goToilet(trainees, traineesInToilet, male, female);
 		stageDirections("Uczestnik w toalecie meskiej: " + male.getOccupant());
-		stageDirections("Kolejka do toalety meskiej: " + java.util.Arrays.toString(male.getLine()));
+		stageDirections("Kolejka do toalety meskiej: " + java.util.Arrays.toString(male.getLain()));
 		stageDirections("Uczestnik w toalecie damskiej: " + female.getOccupant());
-		stageDirections("Kolejka do toalety damskiej: " + java.util.Arrays.toString(female.getLine()));
+		stageDirections("Kolejka do toalety damskiej: " + java.util.Arrays.toString(female.getLain()));
 		
 		// 5 Pozostali Uczestnicy idą do kuchni. Każdy z Uczestników bierze w kuchni Kubek.
 		
@@ -253,9 +257,11 @@ public class CoursePlay {
 		}
 		
 		// 6 Część Uczestników robi kawę w Automacie do kawy, część nalewa sobie wodę w Automacie z wodą (proporcje 75% do 25%).
+		
 		String content = "";
 		int woda = (trainees.length - traineesInToilet) / 4;
-		for (int i = 0; i < (trainees.length - traineesInToilet); i++){
+		int traineesInKitchen = trainees.length - traineesInToilet;
+		for (int i = 0; i < traineesInKitchen; i++){
 			if (i < woda){
 				kitchen.getWaterMachine().fill(kitchen.getTrainees()[i].getCup());
 			} else {
@@ -266,6 +272,28 @@ public class CoursePlay {
 		stageDirections("Zawartosc kubkow: " + content);
 		
 		// 7 Połowa z Uczestników, którzy byli w Toaletach przychodzi do kuchni zrobić sobie kawę.
+		
+		int traineesInToilet2 = traineesInToilet / 2;
+		while (traineesInToilet2 != 0) {
+			for (int i = 0; i < trainees.length; i++){
+				if (trainees[i].getInToilet()) {
+					kitchen.addTrainee(trainees[i]);
+					traineesInKitchen++;
+					trainees[i].setCup(kitchen.getCup(i));
+					kitchen.getCoffeeMachine().fill(trainees[i].getCup());
+					trainees[i].setInToilet(false);
+					break;
+				}
+			}
+			traineesInToilet2--;
+		}
+		content = "";
+		for (int i = 0; i < traineesInKitchen; i++){
+			System.out.println(i);
+			content = content + kitchen.getTrainees()[i].getCup().getContent() + ", ";
+		}
+		stageDirections("Zawartosc kubkow: " + content);
+		
 		// 8 Wszyscy Uczestnicy wracają na Salę i zajmują te same miejsca, co wcześniej.
 
     }
