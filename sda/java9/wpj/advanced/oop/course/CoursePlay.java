@@ -16,8 +16,8 @@ public class CoursePlay {
     public static void main(String[] args) {
 		
 		boolean stage1SOP = false;
-		boolean stage2SOP = true;
-		boolean stage3SOP = false;
+		boolean stage2SOP = false;
+		boolean stage3SOP = true;
 		
 		System.out.println("================================SCENA 1================================");
         
@@ -244,7 +244,7 @@ public class CoursePlay {
 		for (int i = 0; i < ourRoom.getChairs().length; i++){
 			chairs = chairs + ourRoom.getChairs()[i].getUseOfChair() +", ";
 		}
-		stageDirections("Jakie krzesla sa w urzyciu? " + chairs, stage2SOP);
+		stageDirections("Jakie krzesla sa w uzyciu? " + chairs, stage2SOP);
 		stageDirections("Jacy uczestnicy są w sali? " + getNames(ourRoom.getTrainees()), stage2SOP);
 		
 		//===================================================================================================================		
@@ -355,9 +355,35 @@ public class CoursePlay {
 		for (int i = 0; i < ourRoom.getChairs().length; i++){
 			chairs = chairs + ourRoom.getChairs()[i].getUseOfChair() +", ";
 		}
-		stageDirections("Jakie krzesla sa w urzyciu? " + chairs, stage2SOP);		
-
-    }
+		stageDirections("Jakie krzesla sa w uzyciu? " + chairs, stage2SOP);		
+		
+		
+		
+		// SCENA 3
+		
+		System.out.println("================================SCENA 3================================");
+		
+		//===================================================================================================================
+		stageAkcion("1.Trener włącza Projektor.", stage3SOP);
+		
+		Projector projector = new Projector();
+		theTrainer.turnProjectorOn(projector);
+		stageDirections("Czy projektor jest wlaczony? " + projector.getIsOn(), stage3SOP);
+		
+		//2.Trener wyświetla na Projektorze treść bloku „Wprowadzenie do Java”.
+		
+		
+		
+		//3.Trener czyści Tablicę.
+		//4.Trener rysuje na Tablicy jak wygląda typ prymitywny.
+		//5.Jeden z Uczestników (losowy) rysuje na Tablicy złowrogie rysunki.
+		//6.Trener rysuje na Tablicy jak wygląda typ referencyjny, ale wcześniej, jeżeli na Tablicy są złowrogie rysunki, to je zmazuje
+		//7.Trener dziękuję Uczestnikom za udział w zajęciach i kończy Blok kursu „Wprowadzenie do Java”,
+		//8.Trener wyłącza Projektor.
+		//9.Uczestnicy wstają i wychodzą z Sali.
+		//10.Trener wychodzi z Sali i zamyka ją.
+		
+    } 
 	
 	private static void goToilet(Trainee[] trainees, int traineesInToilet, Toilet male, Toilet female){
 		int[] places = new int[trainees.length];

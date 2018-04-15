@@ -1,6 +1,7 @@
 package sda.java9.wpj.advanced.oop.course.people;
 
 import sda.java9.wpj.advanced.oop.course.rooms.*;
+import sda.java9.wpj.advanced.oop.course.items.Projector;
 
 public class Trainer {
     
@@ -28,6 +29,10 @@ public class Trainer {
         greet += "\nJESTEM... " + this.name.toUpperCase();
         return greet;
     }
+	
+	public void turnProjectorOn(Projector projector){
+		projector.setIsOn(true);
+	}
     
     public Trainer() {}
     
