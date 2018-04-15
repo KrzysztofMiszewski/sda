@@ -2,6 +2,7 @@ package sda.java9.wpj.advanced.oop.course.people;
 
 import sda.java9.wpj.advanced.oop.course.rooms.*;
 import sda.java9.wpj.advanced.oop.course.items.Projector;
+import sda.java9.wpj.advanced.oop.course.content.*;
 
 public class Trainer {
     
@@ -41,6 +42,10 @@ public class Trainer {
             }
         }
         return info;
+    }
+	
+	public String sayCourseDetails(Course course) {
+        return "Co więcej można powiedzieć o kursie " + course.getTitle() + "? " + course.getLongDescription();
     }
 	
 	public void turnProjectorOn(Projector projector){
