@@ -50,6 +50,15 @@ public class Trainer {
 	
 	public void cleanBoard(Board board){
 		board.setMsg("");
+		board.setClean(true);
+	}
+	
+	public void writeOnBoard(Board board, String msg){
+		if (!board.getClean()) {
+			cleanBoard(board);
+		}
+		board.setMsg(msg);
+		board.setClean(false);
 	}
 	
 	public String sayCourseDetails(Course course) {

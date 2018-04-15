@@ -423,7 +423,11 @@ public class CoursePlay {
 		theTrainer.cleanBoard(board);
 		stageDirections("Co jest na tablicy? " + board.getMsg(), stage3SOP);
 		
-		//4.Trener rysuje na Tablicy jak wygląda typ prymitywny.
+		//===================================================================================================================
+		stageAkcion("4.Trener rysuje na Tablicy jak wygląda typ prymitywny.", stage3SOP);
+		
+		theTrainer.writeOnBoard(board, "Typy prymitywne: byte, short, int, long, float, double, boolean, char.");
+		stageDirections("Co jest na tablicy? " + board.getMsg(), stage3SOP);
 		//5.Jeden z Uczestników (losowy) rysuje na Tablicy złowrogie rysunki.
 		//6.Trener rysuje na Tablicy jak wygląda typ referencyjny, ale wcześniej, jeżeli na Tablicy są złowrogie rysunki, to je zmazuje
 		//7.Trener dziękuję Uczestnikom za udział w zajęciach i kończy Blok kursu „Wprowadzenie do Java”,
