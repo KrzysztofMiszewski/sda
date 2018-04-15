@@ -413,8 +413,8 @@ public class CoursePlay {
 		//===================================================================================================================
 		stageAkcion("2.Trener wyświetla na Projektorze treść bloku „Wprowadzenie do Java”.", stage3SOP);
 		
-		theTrainer.displayCourse(projector, sdaJava.getgetShortDescription());
-		stageDirections("Co wyswietla projektor? " + projector.getScreen, stage3SOP);
+		theTrainer.displayCourse(projector, sdaJava.getShortDescription());
+		stageDirections("Co wyswietla projektor? " + projector.getScreen(), stage3SOP);
 		
 		//===================================================================================================================
 		stageAkcion("3.Trener czyści Tablicę.", stage3SOP);

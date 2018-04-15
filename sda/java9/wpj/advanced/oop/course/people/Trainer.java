@@ -44,7 +44,7 @@ public class Trainer {
         return info;
     }
 	
-	public void displayCourse(Projector projector, String msg)[
+	public void displayCourse(Projector projector, String msg){
 		projector.setScreen(msg);
 	}
 	
