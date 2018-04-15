@@ -10,7 +10,22 @@ public class CourseBlock {
     private String[] slides;
     private Trainer trainer;
     
-    public String getTitle() {
+    public CourseBlock(String title, String shortDescription) {
+        this.title = title;
+        this.shortDescription = shortDescription;
+    }
+    
+    public CourseBlock(String title, String shortDescription, String longDescription) {
+        this(title, shortDescription);
+        this.longDescription = longDescription;
+    }
+    
+    public CourseBlock(String title, String shortDescription, String longDescription, Trainer trainer) {
+        this(title, shortDescription, longDescription);
+        this.trainer = trainer;
+    }
+	
+	public String getTitle() {
         return title;
     }
     

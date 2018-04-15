@@ -30,6 +30,19 @@ public class Trainer {
         return greet;
     }
 	
+	public String sayMyCourseBlocksInfo(Course course) {
+        String info = "";
+        for (CourseBlock block : course.getBlocks()) {
+            // Sprawdzenie czy trener przypisany do kursu jest trenerem,
+            // na którym wywołaliśmy tą metodę)
+            if (block.getTrainer() == this) {
+                info += "Blok " + block.getTitle() + " to " + block.getShortDescription() 
+                    + ". Gdyby powiedzieć coś o nim więcej, to jest to " + block.getLongDescription() + "\n";
+            }
+        }
+        return info;
+    }
+	
 	public void turnProjectorOn(Projector projector){
 		projector.setIsOn(true);
 	}

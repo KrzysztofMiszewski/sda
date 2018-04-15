@@ -214,9 +214,49 @@ public class CoursePlay {
         sdaJava.setShortDescription("Kurs Java uczy kodowania, programowania i rozwiązywania problemów!");
         say("Menedżer", manager.sayCourseInfo(sdaJava), stage1SOP);
 		
+		/* 12. Trener opowiada o Kursie, przedstawia informacje techniczne. 
+         *
+         * Hint:
+         * Będzie to bardzo podobny kod, do tego, który napisaliśmy dla klasy CourseManager
+         * z tą różnicą, że w klasie Trainer będziemy wykorzystywać inne pole klasy Course
+         */
+         sdaJava.setLongDescription("Kurs Java nauczy Was składni Javy, technik programowania, "
+			+ "programowania samego w sobie, abyście umieli rozwiązywać problemy programistyczne, "
+			+ "również poznacie wiele użytecznych bibliotek, narzędzi oraz framework-ów");
+         say("Trener", theTrainer.sayCourseDetails(sdaJava), stage1SOP);
 		
-		
-		
+		/* 13. Trener opowiada o Blokach kursu, które prowadzi – przedstawia informacje ogólne i techniczne.
+         *
+         * Hint:
+         * Aby trener opowiedział o blokach kursu, to muszą one powstać.
+         * Dodatkowo, każdy blok może być prowadzony przez innego trenera, więc konkretny
+         * trener powinien opowiedzieć tylko o swoich blokach.
+         * Alternatywnie można zrobić tak, że trener opowiada ogólnie o każdym bloku, a szczegółowo
+         * o blokach, które sam prowadzi
+         */
+        CourseBlock wpj = new CourseBlock("Wprowadzenie do języka Java", "16 lekcji o języku Java",
+			"16 lekcji o języku Java, w szczególności: podstawy języka, składnia, typy, wyjątki, itd.",
+			theTrainer);
+        // Tutaj null jako ostatni argument oznacza, że ten blok w ogóle nie ma trenera
+        // czyli też na pewno nasz trener nie jest trenerem do tego bloku (żaden nie jest)
+		CourseBlock git = new CourseBlock("Podstawy GIT", "2 lekcję o GIT",
+            "2 lekcje o GIT, w szczególności: czym jest, tworzenie repozytorium, używanie repozytorium", null);
+        CourseBlock prog1 = new CourseBlock("Programowanie 1", "12 lekcji z nauki programowania",
+			"12 lekcji z nauki programowania, w szczególności nauczymy się jak programować", theTrainer);
+        CourseBlock jvm = new CourseBlock("Wprowadzenie do JVM", "2 lekcje o JVM",
+			"2 lekcje o JVM czyli o maszynie wirtualnej Java i jej narzędzia", theTrainer);
+        // Znowu nasz trener nie prowadzi tego kursu
+        CourseBlock tdd = new CourseBlock("TDD", "5 lekcji o TDD",
+			"5 lekcji o TDD czyli o tworzeniu testów jednostkowych i narzędziach testów jednostkowych", null);
+            
+        // Wszystkie utworzone bloki wsadzamy w tabele i zapisujemy w kursie
+		CourseBlock[] blocks = new CourseBlock[] {wpj, git, prog1, jvm, tdd};
+		sdaJava.setBlocks(blocks);
+        
+        // Trener teraz opowie nam o prowadzonych przez siebie blokach.
+        // My sami mu nie wskażemy jakie to są. Poprosimy go znowu o opowiedzenie o swoich blokach
+        // z jakiegoś kursu, a to trener będzie wiedział, o których coś powiedzieć, a o których nie
+		say("Trener", theTrainer.sayMyCourseBlocksInfo(sdaJava), stage1SOP);
 		
 		// SCENA 2
 		
