@@ -410,11 +410,16 @@ public class CoursePlay {
 		theTrainer.turnProjectorOn(projector);
 		stageDirections("Czy projektor jest wlaczony? " + projector.getIsOn(), stage3SOP);
 		
-		//2.Trener wyświetla na Projektorze treść bloku „Wprowadzenie do Java”.
+		//===================================================================================================================
+		stageAkcion("2.Trener wyświetla na Projektorze treść bloku „Wprowadzenie do Java”.", stage3SOP);
+		
+		theTrainer.displayCourse(projector, sdaJava.getgetShortDescription());
+		stageDirections("Co wyswietla projektor? " + projector.getScreen, stage3SOP);
+		
+		//===================================================================================================================
+		stageAkcion("3.Trener czyści Tablicę.", stage3SOP);
 		
 		
-		
-		//3.Trener czyści Tablicę.
 		//4.Trener rysuje na Tablicy jak wygląda typ prymitywny.
 		//5.Jeden z Uczestników (losowy) rysuje na Tablicy złowrogie rysunki.
 		//6.Trener rysuje na Tablicy jak wygląda typ referencyjny, ale wcześniej, jeżeli na Tablicy są złowrogie rysunki, to je zmazuje

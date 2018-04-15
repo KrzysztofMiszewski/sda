@@ -44,6 +44,10 @@ public class Trainer {
         return info;
     }
 	
+	public void displayCourse(Projector projector, String msg)[
+		projector.setScreen(msg);
+	}
+	
 	public String sayCourseDetails(Course course) {
         return "Co więcej można powiedzieć o kursie " + course.getTitle() + "? " + course.getLongDescription();
     }
