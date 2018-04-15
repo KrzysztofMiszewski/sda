@@ -419,6 +419,9 @@ public class CoursePlay {
 		//===================================================================================================================
 		stageAkcion("3.Trener czyści Tablicę.", stage3SOP);
 		
+		Board board = new Board();
+		theTrainer.cleanBoard(board);
+		stageDirections("Co jest na tablicy? " + board.getMsg(), stage3SOP);
 		
 		//4.Trener rysuje na Tablicy jak wygląda typ prymitywny.
 		//5.Jeden z Uczestników (losowy) rysuje na Tablicy złowrogie rysunki.

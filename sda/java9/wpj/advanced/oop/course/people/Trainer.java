@@ -1,7 +1,7 @@
 package sda.java9.wpj.advanced.oop.course.people;
 
 import sda.java9.wpj.advanced.oop.course.rooms.*;
-import sda.java9.wpj.advanced.oop.course.items.Projector;
+import sda.java9.wpj.advanced.oop.course.items.*;
 import sda.java9.wpj.advanced.oop.course.content.*;
 
 public class Trainer {
@@ -46,6 +46,10 @@ public class Trainer {
 	
 	public void displayCourse(Projector projector, String msg){
 		projector.setScreen(msg);
+	}
+	
+	public void cleanBoard(Board board){
+		board.setMsg("");
 	}
 	
 	public String sayCourseDetails(Course course) {

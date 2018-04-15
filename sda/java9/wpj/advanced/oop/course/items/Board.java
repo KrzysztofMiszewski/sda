@@ -5,8 +5,11 @@ public class Board {
 	private boolean clean;
 	private boolean sponge;
 	private boolean freeSpace;
-	private String boardColor;
+	private String msg;
 
+	public Board() {
+		msg = "5 + 3 * 12";
+	}
 	
 	public boolean getClean(){
 		return clean;
@@ -20,8 +23,8 @@ public class Board {
 		return freeSpace;
 	}
 	
-	public String getBoardColor(){
-		return boardColor;
+	public String getMsg(){
+		return msg;
 	}
 	
 	public void setClean(boolean clean){
@@ -36,8 +39,8 @@ public class Board {
 		this.freeSpace = freeSpace;
 	}
 	
-	public void setBoardColor(String boardColor){
-		this.boardColor = boardColor;
+	public void setMsg(String msg){
+		this.msg = msg;
 	}
 }
 	
