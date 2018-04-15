@@ -22,20 +22,12 @@ public class Kitchen{
 	}
 	
 	public void addTrainee(Trainee trainee){
-		boolean added = false;
 		for (int i = 0; i < this.trainees.length; i++){
 			if (this.trainees[i] == null) {
 				trainees[i] = trainee;
-				added = true;
                 break;
 			}
 		}
-		if (added = true) {
-			System.out.println("[DEBUG] Dodano uczestnika: " + trainee.getName());
-		} else {
-			System.out.println("[DEBUG] Brak miejsca");
-		}
-		
 	}
 	
 	public Cup getCup(int number){

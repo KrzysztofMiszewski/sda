@@ -18,10 +18,10 @@ public class CoffeeMachine {
 		if (haveCoffee == true){
 			cup.setEmpty(false);
 			cup.setContent("Kawa");
-			if (Math.random() >= 0.9){
-				haveCoffee = false;
-				System.out.println("CoffeeMachine - Brak kawy");
-			}
+			// if (Math.random() >= 0.9){
+				// haveCoffee = false;
+				// System.out.println("CoffeeMachine - Brak kawy");
+			// }
 		}
 	}
 	

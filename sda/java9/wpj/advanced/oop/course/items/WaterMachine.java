@@ -16,10 +16,10 @@ public class WaterMachine {
 		if (haveWater == true){
 			cup.setEmpty(false);
 			cup.setContent("Woda");
-			if (Math.random() >= 0.9){
-				haveWater = false;
-				System.out.println("CoffeeMachine - Brak wody");
-			}
+			// if (Math.random() >= 0.9){
+				// haveWater = false;
+				// System.out.println("CoffeeMachine - Brak wody");
+			// }
 		}
 	}
 	

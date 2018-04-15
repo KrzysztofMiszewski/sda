@@ -15,9 +15,11 @@ public class CoursePlay {
      */
     public static void main(String[] args) {
 		
-		boolean stage1SOP = true;
-		boolean stage2SOP = false;
+		boolean stage1SOP = false;
+		boolean stage2SOP = true;
 		boolean stage3SOP = false;
+		
+		System.out.println("================================SCENA 1================================");
         
         /* 1. Pojawia się pierwszy Uczestnik kursu. 
          *
@@ -212,38 +214,65 @@ public class CoursePlay {
         sdaJava.setShortDescription("Kurs Java uczy kodowania, programowania i rozwiązywania problemów!");
         say("Menedżer", manager.sayCourseInfo(sdaJava), stage1SOP);
 		
+		
+		
+		
+		
 		// SCENA 2
 		
-		// 1 Trener ogłasza przerwę
+		System.out.println("================================SCENA 2================================");
+		
+		//===================================================================================================================		
+		stageAkcion("1 Trener ogłasza przerwę", stage2SOP);
 		
 		say(theTrainer.getName(), "Oglaszam przerwe!", stage2SOP);
 		
-		// 2 Menedżer kursu opuszcza Salę i Kurs.
+		//===================================================================================================================		
+		stageAkcion("2 Menedżer kursu opuszcza Salę i Kurs.", stage2SOP);
 		
 		manager.leave();
 		stageDirections("Jaki manager jest w pokoju? " + ourRoom.getCourseManager(), stage2SOP);
 		
-		// 3 Uczestnicy wstają i wychodzą z Sali.
+		//===================================================================================================================		
+		stageAkcion("3 Uczestnicy wstają i wychodzą z Sali.", stage2SOP);
 		
 		for (int i = 0; i < trainees.length; i++){
 			trainees[i].stand();
 			ourRoom.removeTrainee(trainees[i]);
 		}
-		stageDirections("Jacy uczestnicy są w sali? " + java.util.Arrays.toString(ourRoom.getTrainees()), stage2SOP);
+		String chairs = "";
+		for (int i = 0; i < ourRoom.getChairs().length; i++){
+			chairs = chairs + ourRoom.getChairs()[i].getUseOfChair() +", ";
+		}
+		stageDirections("Jakie krzesla sa w urzyciu? " + chairs, stage2SOP);
+		stageDirections("Jacy uczestnicy są w sali? " + getNames(ourRoom.getTrainees()), stage2SOP);
 		
-		// 4 Od 2 do 6 uczestników idzie do Toalet. Uczestnicy mogą być różnych płci. Toalety nie są koedukacyjne.
+		//===================================================================================================================		
+		stageAkcion("4 Od 2 do 6 uczestników idzie do Toalet. Uczestnicy mogą być różnych płci. Toalety nie są koedukacyjne.", stage2SOP);
 		
 		Toilet male = new Toilet('M', 4);
 		Toilet female = new Toilet('D', 4);
 		int traineesInToilet = 2 + (int) (5 * Math.random());
 		stageDirections(traineesInToilet + " uczestnikow idzie do Toalety", stage2SOP);
 		goToilet(trainees, traineesInToilet, male, female);
-		stageDirections("Uczestnik w toalecie meskiej: " + male.getOccupant(), stage2SOP);
-		stageDirections("Kolejka do toalety meskiej: " + java.util.Arrays.toString(male.getLain()), stage2SOP);
-		stageDirections("Uczestnik w toalecie damskiej: " + female.getOccupant(), stage2SOP);
-		stageDirections("Kolejka do toalety damskiej: " + java.util.Arrays.toString(female.getLain()), stage2SOP);
+		String name;
+		if (male.getOccupant() == null){
+			name = "null";
+		} else {
+			name = male.getOccupant().getName();
+		}
+		stageDirections("Uczestnik w toalecie meskiej: " + name, stage2SOP);
+		stageDirections("Kolejka do toalety meskiej: " + getNames(male.getLine()), stage2SOP);
+		if (female.getOccupant() == null){
+			name = "null";
+		} else {
+			name = female.getOccupant().getName();
+		}
+		stageDirections("Uczestnik w toalecie damskiej: " + name, stage2SOP);
+		stageDirections("Kolejka do toalety damskiej: " + getNames(female.getLine()), stage2SOP);
 		
-		// 5 Pozostali Uczestnicy idą do kuchni. Każdy z Uczestników bierze w kuchni Kubek.
+		//===================================================================================================================		
+		stageAkcion("5 Pozostali Uczestnicy idą do kuchni. Każdy z Uczestników bierze w kuchni Kubek.", stage2SOP);
 		
 		Kitchen kitchen = new Kitchen(trainees.length);
 		for (int i = 0; i < trainees.length; i++){
@@ -256,7 +285,8 @@ public class CoursePlay {
 			say(trainees[i].getName(), "Moj kubek to: " + trainees[i].getCup(), stage2SOP);
 		}
 		
-		// 6 Część Uczestników robi kawę w Automacie do kawy, część nalewa sobie wodę w Automacie z wodą (proporcje 75% do 25%).
+		//===================================================================================================================		
+		stageAkcion("6 Część Uczestników robi kawę w Automacie do kawy, część nalewa sobie wodę w Automacie z wodą (proporcje 75% do 25%).", stage2SOP);
 		
 		String content = "";
 		int woda = (trainees.length - traineesInToilet) / 4;
@@ -269,9 +299,11 @@ public class CoursePlay {
 			}
 			content = content + kitchen.getTrainees()[i].getCup().getContent() + ", ";
 		}
+		stageDirections("Uczestnicy w kuchni: " + getNames(kitchen.getTrainees()), stage2SOP);
 		stageDirections("Zawartosc kubkow: " + content, stage2SOP);
 		
-		// 7 Połowa z Uczestników, którzy byli w Toaletach przychodzi do kuchni zrobić sobie kawę.
+		//===================================================================================================================		
+		stageAkcion("7 Połowa z Uczestników, którzy byli w Toaletach przychodzi do kuchni zrobić sobie kawę.", stage2SOP);
 		
 		int traineesInToilet2 = traineesInToilet / 2;
 		while (traineesInToilet2 != 0) {
@@ -291,9 +323,39 @@ public class CoursePlay {
 		for (int i = 0; i < traineesInKitchen; i++){
 			content = content + kitchen.getTrainees()[i].getCup().getContent() + ", ";
 		}
+		male.emptyToilet();
+		female.emptyToilet();
+		
+		if (male.getOccupant() == null){
+			name = "null";
+		} else {
+			name = male.getOccupant().getName();
+		}
+		stageDirections("Uczestnik w toalecie meskiej: " + name, stage2SOP);
+		stageDirections("Kolejka do toalety meskiej: " + getNames(male.getLine()), stage2SOP);
+		if (female.getOccupant() == null){
+			name = "null";
+		} else {
+			name = female.getOccupant().getName();
+		}
+		stageDirections("Uczestnik w toalecie damskiej: " + name, stage2SOP);
+		stageDirections("Kolejka do toalety damskiej: " + getNames(female.getLine()), stage2SOP);
+		stageDirections("Uczestnicy w kuchni: " + getNames(kitchen.getTrainees()), stage2SOP);
 		stageDirections("Zawartosc kubkow: " + content, stage2SOP);
 		
-		// 8 Wszyscy Uczestnicy wracają na Salę i zajmują te same miejsca, co wcześniej.
+		//===================================================================================================================
+		stageAkcion("8 Wszyscy Uczestnicy wracają na Salę i zajmują te same miejsca, co wcześniej.", stage2SOP);
+		
+		for (int i = 0; i < trainees.length; i++) {
+            trainees[i].enter(ourRoom);
+			trainees[i].sit();
+        }
+        stageDirections("Jacy uczestnicy są w sali? " + getNames(ourRoom.getTrainees()), stage2SOP);
+		chairs = "";
+		for (int i = 0; i < ourRoom.getChairs().length; i++){
+			chairs = chairs + ourRoom.getChairs()[i].getUseOfChair() +", ";
+		}
+		stageDirections("Jakie krzesla sa w urzyciu? " + chairs, stage2SOP);		
 
     }
 	
@@ -345,4 +407,22 @@ public class CoursePlay {
 			System.out.println(who + ": \n" + "    \"" + what + "\"");
 		}
     }
+	
+	private static String getNames(Trainee[] trainees){
+		String sg = "";
+		for (int i = 0; i < trainees.length; i++){
+			if (trainees[i] != null){
+				sg = sg + trainees[i].getName() + ", ";
+			} else {
+				sg = sg + "null, ";
+			}
+		}
+		return sg;
+	}
+	
+	private static void stageAkcion(String msg, boolean print){
+		if (print) {
+			System.out.println("\n" + msg + "\n");
+		}
+	}
 }

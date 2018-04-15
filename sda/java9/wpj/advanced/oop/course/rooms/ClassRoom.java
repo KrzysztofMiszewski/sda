@@ -15,35 +15,20 @@ public class ClassRoom {
 	private boolean isOpen; 
     
 	public void addTrainee(Trainee trainee){
-		boolean added = false;
 		for (int i = 0; i < this.trainees.length; i++){
 			if (this.trainees[i] == null) {
 				trainees[i] = trainee;
-				added = true;
                 break;
 			}
 		}
-		if (added = true) {
-			System.out.println("[DEBUG] Dodano uczestnika: " + trainee.getName());
-		} else {
-			System.out.println("[DEBUG] Brak miejsca");
-		}
-		
 	}
 	
 	public void removeTrainee(Trainee trainee){
-		Boolean removed = false;
 		for (int i = 0; i < this.trainees.length; i++){
 			if (this.trainees[i] == trainee) {
 				trainees[i] = null;
-				removed = true;
 				break;
 			}
-		}
-		if (removed = true) {
-			System.out.println("[DEBUG] Usunieto uczestnika: " + trainee.getName());
-		} else {
-			System.out.println("[DEBUG] Nie znaleziono uczestnika: " + trainee.getName());
 		}
 	}
 	
