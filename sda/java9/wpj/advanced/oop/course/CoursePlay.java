@@ -413,7 +413,7 @@ public class CoursePlay {
 		//===================================================================================================================
 		stageAkcion("2.Trener wyświetla na Projektorze treść bloku „Wprowadzenie do Java”.", stage3SOP);
 		
-		theTrainer.displayCourse(projector, sdaJava.getShortDescription());
+		theTrainer.displayCourse(projector, wpj.getLongDescription());
 		stageDirections("Co wyswietla projektor? " + projector.getScreen(), stage3SOP);
 		
 		//===================================================================================================================
@@ -428,9 +428,25 @@ public class CoursePlay {
 		
 		theTrainer.writeOnBoard(board, "Typy prymitywne: byte, short, int, long, float, double, boolean, char.");
 		stageDirections("Co jest na tablicy? " + board.getMsg(), stage3SOP);
-		//5.Jeden z Uczestników (losowy) rysuje na Tablicy złowrogie rysunki.
-		//6.Trener rysuje na Tablicy jak wygląda typ referencyjny, ale wcześniej, jeżeli na Tablicy są złowrogie rysunki, to je zmazuje
-		//7.Trener dziękuję Uczestnikom za udział w zajęciach i kończy Blok kursu „Wprowadzenie do Java”,
+		
+		//===================================================================================================================
+		stageAkcion("5.Jeden z Uczestników (losowy) rysuje na Tablicy złowrogie rysunki.", stage3SOP);
+		
+		int randTrainee = (int) (10 * Math.random());
+		trainees[randTrainee].writeOnBoard(board, "Zlowrogie rysunki - autor: " + trainees[randTrainee].getName());
+		stageDirections("Co jest na tablicy? " + board.getMsg(), stage3SOP);
+		
+		//===================================================================================================================
+		stageAkcion("6.Trener rysuje na Tablicy jak wygląda typ referencyjny, ale wcześniej,"
+						+ " jeżeli na Tablicy są złowrogie rysunki, to je zmazuje", stage3SOP);
+		
+		theTrainer.writeOnBoard(board, "Typy referencyjne: int[], someClass()");
+		stageDirections("Co jest na tablicy? " + board.getMsg(), stage3SOP);
+		
+		//===================================================================================================================
+		stageAkcion("7.Trener dziękuję Uczestnikom za udział w zajęciach i kończy Blok kursu „Wprowadzenie do Java”", stage3SOP);
+		
+		
 		//8.Trener wyłącza Projektor.
 		//9.Uczestnicy wstają i wychodzą z Sali.
 		//10.Trener wychodzi z Sali i zamyka ją.
